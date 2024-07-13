@@ -10,6 +10,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
+
   // router hook to navigate
   const router = useRouter();
 
@@ -26,15 +27,16 @@ const LoginForm = () => {
 
       // if the login is success go to the /user page
       if (response.ok) {
+        const data = await response.json();
         router.push('/user');
       } else {
         // else get the response from the api
         const data = await response.json();
-
+        // and set error state
         setError(data.error);
       }
     } catch (error) {
-      // or displat this error message
+      // or display this error message
       setError('an error occurred');
     }
   };
@@ -65,6 +67,7 @@ const LoginForm = () => {
               className='w-full p-2 border border-gray-300 rounded mt-1'
             />
           </div>
+          {/* if there is an error, display it */}
           {error && <p className='text-red-500'>{error}</p>}
           <button
             type='submit'

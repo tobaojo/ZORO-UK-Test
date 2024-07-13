@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
+// type User
 type User = {
   username: string;
   email: string;
@@ -9,14 +10,23 @@ type User = {
 };
 
 const UserInfo = () => {
+  // state is tyype user or null for inital set up
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await fetch('/api/user');
-      const data = await res.json();
-      setUser(data);
+      // GET from user endpoint
+      const response = await fetch('/api/user');
+
+      // if response is ok get the data and  set state
+      if (response.ok) {
+        const data = await response.json();
+        setUser(data);
+      } else {
+        throw new Error('Failed to fetch data');
+      }
     };
+
     fetchUser();
   }, []);
 
@@ -24,15 +34,15 @@ const UserInfo = () => {
     <div className='flex justify-center items-center h-screen bg-gray-100'>
       {user ? (
         <div className='bg-white p-8 rounded shadow-md w-80'>
-          <h1 className='text-xl mb-4'>User Information</h1>
+          <h1 className='text-xl mb-4'>Welcome</h1>
           <p>
-            <strong>Username:</strong> {user.username}
+            <span className='text-blue-600'>Username:</span> {user.username}
           </p>
           <p>
-            <strong>Email:</strong> {user.email}
+            <span className='text-blue-600'>Email:</span> {user.email}
           </p>
           <p>
-            <strong>Name:</strong> {user.name}
+            <span className='text-blue-600'>Name:</span> {user.name}
           </p>
         </div>
       ) : (

@@ -12,11 +12,20 @@ type User = {
 const UserInfo = () => {
   // state is type user or null for inital set up
   const [user, setUser] = useState<User | null>(null);
-
+  const [error, setError] = useState('');
   useEffect(() => {
     const fetchUser = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const username = urlParams.get('username');
+
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('No token found');
+        return;
+      }
+
       // GET from user endpoint
-      const response = await fetch('/api/user');
+      const response = await fetch(`/api/user?username=${username}`);
 
       // if response is ok get the data and  set state
       if (response.ok) {
@@ -46,7 +55,7 @@ const UserInfo = () => {
           </p>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>{error || 'Loading...'}</p>
       )}
     </div>
   );

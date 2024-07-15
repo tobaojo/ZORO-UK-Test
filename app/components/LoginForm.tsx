@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import ZORO from '../../public/images/zorouk.jpeg';
+import Link from 'next/link';
 
 const LoginForm = () => {
   // Setting state for the username and password fields
@@ -28,7 +29,8 @@ const LoginForm = () => {
       // if the login is success go to the /user page
       if (response.ok) {
         const data = await response.json();
-        router.push('/user');
+        localStorage.setItem('token', data.token);
+        router.push(`/user?username=${username}`);
       } else {
         // else get the response from the api and set error state
         const data = await response.json();
@@ -42,8 +44,8 @@ const LoginForm = () => {
 
   return (
     <div className='flex justify-center items-center h-screen bg-gray-100'>
-      <div className='bg-white p-8 rounded shadow-md w-80'>
-        <h1 className='text-xl mb-4'>Welcome to ZORO test</h1>
+      <div className='bg-white p-8 rounded shadow-md w-90'>
+        <h2 className='text-xl mb-4'>Welcome to ZORO test</h2>
         <Image src={ZORO} alt='ZORO-LOGO' className='mx-auto mb-2' />
         <form onSubmit={handleSubmit}>
           <div className='mb-4'>
@@ -70,11 +72,17 @@ const LoginForm = () => {
           {error && <p className='text-red-500'>{error}</p>}
           <button
             type='submit'
-            className='w-full bg-blue-500 text-white p-2 rounded mt-4 hover:bg-blue-900 '
+            className='w-full bg-blue-500 text-white p-2 rounded my-4 hover:bg-blue-900 '
           >
             Login
           </button>
         </form>
+        <p>
+          Don&apos;t have an account?{' '}
+          <Link href='/register' className='text-blue-700 hover:underline'>
+            Register here
+          </Link>
+        </p>
       </div>
     </div>
   );

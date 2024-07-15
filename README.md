@@ -7,7 +7,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 ```bash
- git clone <repository-url>
+git clone <repository-url>
 
 npm install
 

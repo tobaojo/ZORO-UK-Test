@@ -30,9 +30,8 @@ const LoginForm = () => {
         const data = await response.json();
         router.push('/user');
       } else {
-        // else get the response from the api
+        // else get the response from the api and set error state
         const data = await response.json();
-        // and set error state
         setError(data.error);
       }
     } catch (error) {

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '../../../lib/prisma';
 
 export async function GET(request: NextRequest) {
-  // get user from DB - not hardcoded ideally
+  // get user from DB - not hardcoded ideally for the search params
   const user = await prisma.user.findUnique({ where: { username: 'username' } });
 
   // if no user then respond with message

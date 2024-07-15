@@ -10,8 +10,8 @@ export async function POST(req: NextRequest) {
     const user = await prisma.user.findUnique({ where: { username, password } });
 
     if (user) {
-      // respond with success, status 200 and token
-      return NextResponse.json({ success: true, user }, { status: 200 });
+      // respond with success and status 200
+      return NextResponse.json({ success: true }, { status: 200 });
     } else {
       // else respond with error message and status 401
       return NextResponse.json({ error: 'Authentication failed' }, { status: 401 });

@@ -10,7 +10,7 @@ type User = {
 };
 
 const UserInfo = () => {
-  // state is tyype user or null for inital set up
+  // state is type user or null for inital set up
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {

@@ -18,7 +18,7 @@ describe('/api/login API Endpoint', () => {
 
     expect(response.status).toBe(200);
     const data = await response.json();
-    expect(data).toEqual({ success: true, user: { username: 'username', password: 'password' } });
+    expect(data).toEqual({ success: true });
   });
 
   it('returns error on invalid credentials', async () => {

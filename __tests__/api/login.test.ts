@@ -1,16 +1,15 @@
 import { createMocks } from 'node-mocks-http';
-import { POST } from '../../../app/api/login/route';
+import { POST } from '../../app/api/login/route';
 import { NextRequest } from 'next/server';
 import bcrypt from 'bcrypt';
-import prisma from '../../../lib/prisma';
-import { generateToken } from '../../../lib/jwt';
+import prisma from '../../lib/prisma';
+import { generateToken } from '../../lib/jwt';
 
-// Mock the Prisma client
-jest.mock('../../../lib/prisma', () => require('../../../__mocks__/prisma'));
+jest.mock('../../lib/prisma', () => require('../../__mocks__/prisma'));
 jest.mock('bcrypt', () => ({
   compare: jest.fn(),
 }));
-jest.mock('../../../lib/jwt', () => ({
+jest.mock('../../lib/jwt', () => ({
   generateToken: jest.fn(() => 'mocked-token'),
 }));
 

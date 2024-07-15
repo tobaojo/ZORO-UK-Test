@@ -25,7 +25,12 @@ const UserInfo = () => {
       }
 
       // GET from user endpoint
-      const response = await fetch(`/api/user?username=${username}`);
+      const response = await fetch(`/api/user?username=${username}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       // if response is ok get the data and  set state
       if (response.ok) {

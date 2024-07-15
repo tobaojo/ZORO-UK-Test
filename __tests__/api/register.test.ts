@@ -1,10 +1,10 @@
 import { createMocks } from 'node-mocks-http';
-import { POST } from '../../../app/api/register/route';
+import { POST } from '../../app/api/register/route';
 import { NextRequest } from 'next/server';
-import prisma from '../../../lib/prisma';
+import prisma from '../../lib/prisma';
 import bcrypt from 'bcrypt';
 
-jest.mock('../../../lib/prisma', () => require('../../../__mocks__/prisma'));
+jest.mock('../../lib/prisma', () => require('../../__mocks__/prisma'));
 jest.mock('bcrypt', () => ({
   hash: jest.fn(() => 'hashedpassword'),
   genSalt: jest.fn(() => 'somesalt'),

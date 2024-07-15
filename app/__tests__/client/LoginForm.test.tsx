@@ -1,7 +1,10 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import LoginForm from '../../../components/LoginForm';
+import LoginForm from '../../../app/components/LoginForm';
+import { useRouter } from 'next/router';
+import React from 'react';
 
+jest.mock('next/router', () => require('next-router-mock'));
 describe('LoginForm', () => {
   it('renders the login form', () => {
     render(<LoginForm />);

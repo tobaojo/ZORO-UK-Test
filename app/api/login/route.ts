@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
     const user = await prisma.user.findUnique({ where: { username } });
 
     if (user) {
+      // Compare provided password with the stored hashed password
       const isMatch = await bcrypt.compare(password, user?.password);
       if (isMatch) {
         const token = await generateToken(username);

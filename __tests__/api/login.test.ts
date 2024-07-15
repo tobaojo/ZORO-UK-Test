@@ -41,6 +41,26 @@ describe('/api/login API Endpoint', () => {
     expect(data).toEqual({ success: true, token: 'mocked-token' });
   });
 
+  it('returns error on invalid request method', async () => {
+    console.log('first');
+    const { req } = createMocks({
+      method: 'GET',
+    });
+
+    const nextRequest = new NextRequest('http://localhost/api/login', {
+      method: req.method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const response = await POST(nextRequest);
+
+    expect(response.status).toBe(405);
+    const data = await response.json();
+    expect(data).toEqual({ error: 'Method Not Allowed' });
+  });
+
   it('returns error on invalid credentials', async () => {
     (prisma.user.findUnique as jest.Mock).mockResolvedValue(null);
 

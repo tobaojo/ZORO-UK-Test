@@ -1,6 +1,6 @@
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'jsdom', // Use jsdom for frontend tests
+  testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/app/$1',
@@ -13,5 +13,5 @@ module.exports = {
       tsconfig: 'tsconfig.jest.json',
     },
   },
-  testMatch: ['<rootDir>/__tests__/client/**/*.test.(ts|tsx|js|jsx)'], // Match frontend tests
+  testMatch: ['<rootDir>/__tests__/client/**/*.test.(ts|tsx|js|jsx)'],
 };

@@ -4,6 +4,9 @@ import bcrypt from 'bcrypt';
 import { generateToken } from '../../../lib/jwt';
 
 export async function POST(req: NextRequest) {
+  if (req.method !== 'POST') {
+    return NextResponse.json({ error: 'Method Not Allowed' }, { status: 405 });
+  }
   try {
     // destructuring username and password from the request
     const { username, password } = await req.json();

@@ -6,7 +6,7 @@ I used Typescript to create this project along with TailwindCSS as a framework, 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-The Login details for this project are `username` and `password` - All lowercase
+The Login details for this project are `username1` and `password` - All lowercase
 
 ## Getting Started
 
@@ -21,6 +21,7 @@ In the root directory of the project, create a .env file and add the following l
 
 ```bash
 DATABASE_URL="file:./dev.db"
+SECRET_KEY='ABC123'
 ```
 
 Then Run Prisma Migrations then generate the prisma client:

@@ -4,12 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
+  // setting state for the fields
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  // router hook to navigate
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,6 +34,7 @@ const RegisterForm = () => {
         setEmail('');
         setName('');
 
+        // navigate back to home
         router.push('/');
       } else {
         const data = await response.json();

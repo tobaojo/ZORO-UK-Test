@@ -4,12 +4,12 @@ This Project was created for the technical test for Zoro Uk. It is a login and u
 
 I used Typescript to create this project along with TailwindCSS as a framework, and connected using a prisma database and wrote a test for logging in.
 
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 The Login details for this project are `username` and `password` - All lowercase
 
 ## Getting Started
+
 ```bash
 git clone <repository-url>
 
@@ -22,18 +22,23 @@ In the root directory of the project, create a .env file and add the following l
 ```bash
 DATABASE_URL="file:./dev.db"
 ```
+
 Then Run Prisma Migrations then generate the prisma client:
+
 ```bash
 npx prisma migrate dev --name init
 
 npx prisma generate
 ```
 
-Seed the database: 
+Seed the database:
+
 ```bash
 npx ts-node --transpile-only scripts/init-db.ts
 ```
-And finally run the dev server: 
+
+And finally run the dev server:
+
 ```bash
 npm run dev
 ```
@@ -41,6 +46,20 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## tests
+
+To test the front end:
+
+```bash
+npm run test:frontend
+```
+
+To test api:
+
+```bash
+npm run test:api
+```
 
 ## Enhancements and considerations
 

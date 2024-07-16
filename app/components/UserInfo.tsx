@@ -13,6 +13,7 @@ const UserInfo = () => {
   // state is type user or null for inital set up
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState('');
+
   useEffect(() => {
     const fetchUser = async () => {
       const urlParams = new URLSearchParams(window.location.search);

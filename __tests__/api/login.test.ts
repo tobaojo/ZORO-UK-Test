@@ -3,7 +3,6 @@ import { POST } from '../../app/api/login/route';
 import { NextRequest } from 'next/server';
 import bcrypt from 'bcrypt';
 import prisma from '../../lib/prisma';
-import { generateToken } from '../../lib/jwt';
 
 jest.mock('../../lib/prisma', () => require('../../__mocks__/prisma'));
 jest.mock('bcrypt', () => ({
@@ -42,7 +41,6 @@ describe('/api/login API Endpoint', () => {
   });
 
   it('returns error on invalid request method', async () => {
-    console.log('first');
     const { req } = createMocks({
       method: 'GET',
     });
